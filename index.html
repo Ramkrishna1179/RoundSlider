@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Round Slider Example</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      #slider2 {
+        display: flex;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="slider2"></div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        let count = 10;
+        let previousAngle = 0;
+        
+        $("#slider2").roundSlider({
+          sliderType: "min-range",
+          value: "0",
+          svgMode: true,
+          rangeColor: "#03a9f4",
+          pathColor: "#ececec",
+          borderWidth: 0,
+          showTooltip: true,
+          editableTooltip: false,
+          change: function (event) {
+            let val = event.value;
+            if (val>=50) {
+              count++;
+              event.target.parentElement.parentElement.parentElement.children[2].innerHTML=count;
+
+            }
+            // previousAngle = angle;
+            $("#slider2").roundSlider("option", "tooltipText", count);
+          },
+          stop: function (event) {
+            // let angle = event.handle.angle;
+            if (event.handle.value>=50) {
+              count++;
+            }
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<!-- 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.js"></script>
+  <style>
+#slider2{
+  display: flex;
+margin: auto;}
+  </style>
+</head>
+<body>
+  <div id="slider2"></div>
+</body>
+</html>
+
+<script>
+  let count = 0; // Initialize count variable
+  
+  $("#slider2").roundSlider({
+    sliderType: "min-range",
+    value: "0",
+    svgMode: true,
+    rangeColor: "#03a9f4",
+    pathColor: "#ececec",
+    borderWidth: 0,
+    tooltipFormat: function(value) {
+      return count; // Display count value in the tooltip
+    },
+   
+    dragComplete: function (e) {
+      debugger
+      if (e.handle.angle >= 360) { // Check if handle angle is 360 or more
+        count++; // Increment count variable
+        // $("#slider2").roundSlider("refresh"); // Refresh the slider to update the tooltip
+      }
+    },
+    drag: function (e) {
+      if (e.direction === "anticlockwise") { // Check if drag direction is anticlockwise
+        count--; // Decrement count variable
+        // $("#slider2").roundSlider("refresh"); // Refresh the slider to update the tooltip
+      }
+    }
+  });
+</script>  -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/round-slider@1.6.1/dist/roundslider.min.js"></script>
+  <style>
+#slider2{
+  display: flex;
+margin: auto;}
+  </style>
+</head>
+<body>
+  <div id="slider2"></div>
+</body>
+</html>
+
+<script>
+  let count = 0; // Initialize count variable
+  
+  $("#slider2").roundSlider({
+    sliderType: "min-range",
+    value: "0",
+    svgMode: true,
+    rangeColor: "#03a9f4",
+    pathColor: "#ececec",
+    borderWidth: 0,
+    tooltipFormat: function(value) {
+      return count; // Display count value in the tooltip
+    },
+    // change: function (e) {
+    //   if (e.value >99) { // Check if slider value is above 50
+    //     count++; // Increment count variable
+    //     // $("#slider2").roundSlider("refresh"); // Refresh the slider to update the tooltip
+    //   }
+    // },
+    dragComplete: function (e) {
+      debugger
+      if (e.handle.angle >= 360) { // Check if handle angle is 360 or more
+        count++; // Increment count variable
+        // $("#slider2").roundSlider("refresh"); // Refresh the slider to update the tooltip
+      }
+    },
+    drag: function (e) {
+      if (e.direction === "anticlockwise") { // Check if drag direction is anticlockwise
+        count--; // Decrement count variable
+        // $("#slider2").roundSlider("refresh"); // Refresh the slider to update the tooltip
+      }
+    }
+  });
+</script> 
+ -->
